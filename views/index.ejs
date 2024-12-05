@@ -15,9 +15,15 @@
         <div class="size">Size: <%= shoe.size %></div>
         <div class="price">Price: <%= shoe.price %></div>
 
-        <form action="/edit/<%= shoe.id %>" method="get">
-          <button type="submit">Edit</button>
-        </form>
+        <div class="buttons">
+          <form action="/edit/<%= shoe.id %>" method="get">
+            <button type="submit">Edit</button>
+          </form>
+
+          <form action="/delete/<%= shoe.id %>" method="get">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
       </div>
       <% }) %> <% } %>
     </div>

@@ -6,5 +6,6 @@ const inventoryRouter = Router();
 inventoryRouter.get("/", inventoryController.getAllShoes);
 inventoryRouter.get("/edit/:id", inventoryController.editShoeGet);
 inventoryRouter.post("/edit/:id", inventoryController.editShoePost);
+inventoryRouter.get("/delete/:id", inventoryController.deleteShoeGet);
 
 module.exports = inventoryRouter;

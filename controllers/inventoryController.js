@@ -68,8 +68,14 @@ async function editShoePost(req, res) {
   res.redirect("/");
 }
 
+async function deleteShoeGet(req, res) {
+  await db.deleteShoe(req.params.id);
+  res.redirect("/");
+}
+
 module.exports = {
   getAllShoes,
   editShoeGet,
   editShoePost: [validateShoe, editShoePost],
+  deleteShoeGet,
 };
