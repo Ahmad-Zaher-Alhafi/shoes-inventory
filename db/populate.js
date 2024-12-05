@@ -40,7 +40,7 @@ async function main() {
 
   const client = new Client({
     connectionString:
-      "postgresql://zaherha:a123a123@localhost:5432/shoes_inventory",
+      "postgresql://shoes_inventory_owner:C3k6fUrHZoIa@ep-noisy-violet-a2qxy012.eu-central-1.aws.neon.tech/shoes_inventory?sslmode=require",
   });
 
   await client.connect();
