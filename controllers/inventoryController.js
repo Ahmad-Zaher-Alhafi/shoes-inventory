@@ -1,5 +1,6 @@
 const db = require("../db/queries");
 const { body, validationResult } = require("express-validator");
+const adminPassword = "123";
 
 const validateShoe = [
   body("gender")
@@ -96,6 +97,18 @@ async function addShoePost(req, res) {
   res.redirect("/");
 }
 
+async function isAdmin(req, res) {
+  const { password } = req.body;
+
+  if (!password) {
+    return res.status(400).json({ message: "Password is required." });
+  }
+
+  const isAdmin = password === adminPassword;
+
+  res.json({ isAdmin });
+}
+
 module.exports = {
   getAllShoes,
   editShoeGet,
@@ -103,4 +116,5 @@ module.exports = {
   deleteShoeGet,
   addShoeGet,
   addShoePost: [validateShoe, addShoePost],
+  isAdmin,
 };

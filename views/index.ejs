@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/checkAdmin.js" defer></script>
     <title>Shoes inventory</title>
   </head>
   <body>
@@ -16,12 +17,12 @@
         <div class="price">Price: <%= shoe.price %></div>
 
         <div class="buttons">
-          <form action="/edit/<%= shoe.id %>" method="get">
-            <button type="submit">Edit</button>
+          <form class="editForm" action="/edit/<%= shoe.id %>" method="get">
+            <button type="button" class="editButton">Edit</button>
           </form>
 
-          <form action="/delete/<%= shoe.id %>" method="get">
-            <button type="submit">Delete</button>
+          <form class="deleteForm" action="/delete/<%= shoe.id %>" method="get">
+            <button type="button" class="deleteButton">Delete</button>
           </form>
         </div>
       </div>

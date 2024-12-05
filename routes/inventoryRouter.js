@@ -9,5 +9,6 @@ inventoryRouter.post("/edit/:id", inventoryController.editShoePost);
 inventoryRouter.get("/delete/:id", inventoryController.deleteShoeGet);
 inventoryRouter.get("/add", inventoryController.addShoeGet);
 inventoryRouter.post("/add", inventoryController.addShoePost);
+inventoryRouter.post("/isAdmin", inventoryController.isAdmin);
 
 module.exports = inventoryRouter;
