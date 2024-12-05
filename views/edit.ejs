@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit shoe</title>
+  </head>
+  <body>
+    <% if ("shoe" in locals) { %>
+      <form action="/edit", method="post">
+        <div class="shoe">
+          <label for="gender">Gender:</label>
+          <input type="text" id="gender" name="gender" value="<%= shoe.gender %>">
+
+          <label for="type">Type:</label>
+          <input type="text" id="type" name="type" value="<%= shoe.type %>">
+
+          <label for="size">Size:</label>
+          <input type="text" id="size" name="size" value="<%= shoe.size %>">
+
+          <label for="price">Price:</label>
+          <input type="text" id="price" name="price" value="<%= shoe.price %>">
+        </div>
+
+        <button>Submit</button>
+      </form>
+    <% } %>
+    </div>
+  </body>
+</html>

@@ -12,6 +12,12 @@ async function getShoesOfGender(gender) {
   return rows;
 }
 
+async function getShoe(id) {
+  const addQuery = `select shoe.id, shoes.gender, shoe.type, shoe.size, shoe.price from shoes join shoe on shoes.id = shoe.gender_id where shoe.id = $1 limit 1`;
+  const { rows } = await pool.query(addQuery, [id]);
+  return rows;
+}
+
 async function addShoe(gender, type, size, price) {
   const addQuery = `INSERT INTO shoe (gender_id, type, size, price) 
       VALUES
@@ -37,4 +43,5 @@ module.exports = {
   addShoe,
   editShoe,
   deleteShoe,
+  getShoe,
 };

@@ -10,8 +10,14 @@
     <div class="shoes">
       <% shoes.forEach(shoe => { %>
       <div class="shoe">
-        Gender: <%= shoe.gender %>, Type: <%= shoe.type %>, Size: <%= shoe.size
-        %>, Price: <%= shoe.price %>
+        <div class="gender">Gender: <%= shoe.gender %></div>
+        <div class="type">Type: <%= shoe.type %></div>
+        <div class="size">Size: <%= shoe.size %></div>
+        <div class="price">Price: <%= shoe.price %></div>
+
+        <form action="/edit/<%= shoe.id %>" method="get">
+          <button type="submit">Edit</button>
+        </form>
       </div>
       <% }) %> <% } %>
     </div>
