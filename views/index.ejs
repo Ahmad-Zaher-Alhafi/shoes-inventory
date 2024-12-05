@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shoes inventory</title>
+  </head>
+  <body>
+    <% if ("shoes" in locals) { %>
+    <div class="shoes">
+      <% shoes.forEach(shoe => { %>
+      <div class="shoe">
+        Gender: <%= shoe.gender %>, Type: <%= shoe.type %>, Size: <%= shoe.size
+        %>, Price: <%= shoe.price %>
+      </div>
+      <% }) %> <% } %>
+    </div>
+  </body>
+</html>
