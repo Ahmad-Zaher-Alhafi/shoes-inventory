@@ -30,22 +30,24 @@ async function isAdmin() {
   }
 }
 
-document
-  .querySelector(".deleteButton")
-  .addEventListener("click", async function () {
+const deleteButtons = document.querySelectorAll(".deleteButton");
+deleteButtons.forEach((deleteButton) => {
+  deleteButton.addEventListener("click", async function () {
     if (await isAdmin()) {
       document.querySelector(".deleteForm").submit();
     } else {
       alert("No admin permissions for this action");
     }
   });
+});
 
-document
-  .querySelector(".editButton")
-  .addEventListener("click", async function () {
+const editButtons = document.querySelectorAll(".editButton");
+editButtons.forEach((editButton) => {
+  editButton.addEventListener("click", async function () {
     if (await isAdmin()) {
       document.querySelector(".editForm").submit();
     } else {
       alert("No admin permissions for this action");
     }
   });
+});
