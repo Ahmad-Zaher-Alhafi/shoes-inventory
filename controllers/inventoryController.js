@@ -73,9 +73,34 @@ async function deleteShoeGet(req, res) {
   res.redirect("/");
 }
 
+async function addShoeGet(req, res) {
+  res.render("add");
+}
+
+async function addShoePost(req, res) {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).render("add", {
+      shoe: { ...req.body, id: req.params.id },
+      errors: result.errors[0],
+    });
+  }
+
+  const shoeBody = req.body;
+  await db.addShoe(
+    shoeBody.gender,
+    shoeBody.type,
+    shoeBody.size,
+    shoeBody.price
+  );
+  res.redirect("/");
+}
+
 module.exports = {
   getAllShoes,
   editShoeGet,
   editShoePost: [validateShoe, editShoePost],
   deleteShoeGet,
+  addShoeGet,
+  addShoePost: [validateShoe, addShoePost],
 };
