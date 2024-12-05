@@ -1,5 +1,5 @@
 const db = require("../db/queries");
-const { body, validationRedult } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 const validateShoe = [
   body("gender")
@@ -43,22 +43,33 @@ async function getAllShoes(req, res) {
   res.render("index", { shoes });
 }
 
-async function getShoe(req, res) {
+async function editShoeGet(req, res) {
   const shoe = await db.getShoe(req.params.id);
   res.render("edit", { shoe: shoe[0] });
 }
 
-async function editShoe(req, res) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).render("createUser", {
-      title: "Create user",
-      errors: errors.array(),
+async function editShoePost(req, res) {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).render("edit", {
+      shoe: { ...req.body, id: req.params.id },
+      errors: result.errors[0],
     });
   }
 
-  const shoe = await db.getShoe(req.body.id);
-  res.render("edit", { shoe });
+  const shoeBody = req.body;
+  await db.editShoe(
+    req.params.id,
+    shoeBody.gender,
+    shoeBody.type,
+    shoeBody.size,
+    shoeBody.price
+  );
+  res.redirect("/");
 }
 
-module.exports = { getAllShoes, getShoe, editShoe: [validateShoe, editShoe] };
+module.exports = {
+  getAllShoes,
+  editShoeGet,
+  editShoePost: [validateShoe, editShoePost],
+};
