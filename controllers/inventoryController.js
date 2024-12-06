@@ -25,8 +25,8 @@ const validateShoe = [
           throw new Error("Size for women should be between 36 to 40");
         }
       } else {
-        if (value < 20 || value > 36) {
-          throw new Error("Size for men should be between 20 to 36");
+        if (value < 20 || value > 35) {
+          throw new Error("Size for children should be between 20 to 35");
         }
       }
 
